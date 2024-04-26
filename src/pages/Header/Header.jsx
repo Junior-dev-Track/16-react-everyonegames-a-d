@@ -1,15 +1,14 @@
 import {Link} from "react-router-dom";
-import './Header.css';
+
 
 function Header() {
     return (
         <header>
             <nav>
-                <Link to="/">Home</Link>
-                <p>New Releases</p>
-                <Link to="/">This Week</Link>
-                <Link to="/">Next Week</Link>
-                <Link to="/">Best of the year</Link>
+                <ul>
+                    <img className="iconWeb" src="/src/assets/Instant.svg" alt="Instant Logo"/>
+                    <input/>
+                </ul>
             </nav>
         </header>
     );

@@ -2,7 +2,7 @@ import Header from "../Header/Header";
 import { getApiGamesId } from "../../api/Api";
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from "react";
-import Gameinfo from "../../components/Gameinfo";
+
 
 // eslint-disable-next-line react/prop-types
 function Gameunique() {
@@ -28,7 +28,7 @@ function Gameunique() {
                 </aside>
                 <div className="mainBloc">
                     <img src={gameId.background_image} alt={gameId.name}/>
-                    <p>{gameId.description}</p>
+                    <>{gameId.description}</>
                 </div>
             </div>
         </>
