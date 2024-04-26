@@ -1,8 +1,20 @@
+import Aside from "../../components/Aside";
+import Header from "../Header/Header";
+import GenerateGameList from "../../components/GenerateGameList.jsx";
+
 function Goty() {
     return (
-        <div>
-            <h1>Game Of The Year</h1>
-        </div>
+        <>
+            <Header/>
+            <div className="container">
+                <div className="flexBox">
+                    <Aside/>
+                    <main>
+                        <GenerateGameList />
+                    </main>
+                </div>
+            </div>
+        </>
     );
 }
 

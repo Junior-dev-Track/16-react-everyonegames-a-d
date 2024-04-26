@@ -59,7 +59,15 @@ header {
 .bgGames {
   background-color: #0A0A0A;
   width: 30%;
-  height: 50%;
+  height: fit-content;
+}
+
+.bgGames__infos h2 {
+  margin: 15px 0px;
+}
+
+.bgGames__infos p {
+  margin-bottom: 15px;
 }
 
 .imageGame {
@@ -92,7 +100,7 @@ body {
 
 .imageGame {
   width: 100%;
-  height: 60%;
+  height: 45%;
 }
 
 .flexBox {
@@ -131,11 +139,8 @@ body {
 .Colors:hover {
   color: #9e9d9d;
 }
-.Colors:hover .SVGInline-svg:hover path {
-  fill: #9e9d9d;
-}
 
-span:hover > .SVGInline-svg path {
+.SVGInline-svg:hover path {
   fill: #9e9d9d;
 }
 
@@ -146,7 +151,7 @@ span:hover > .SVGInline-svg path {
 }
 
 .nav__menutitle {
-  padding-top: 20px;
+  margin-top: 30px;
   font-size: 24px;
   line-height: 28px;
   font-weight: 400;
@@ -166,6 +171,7 @@ span:hover > .SVGInline-svg path {
   flex-direction: row;
   justify-content: center;
   gap: 5px;
+  padding-bottom: 20px;
 }
 
 .resizeImage {

@@ -1,9 +1,20 @@
+import Header from "../Header/Header.jsx";
+import Aside from "../../components/Aside.jsx";
+import GenerateGameList from "../../components/GenerateGameList.jsx";
 
 function Nextweek() {
     return (
-        <div>
-            <h1>Next Week Page</h1>
-        </div>
+        <>
+            <Header/>
+            <div className="container">
+                <div className="flexBox">
+                    <Aside/>
+                    <main>
+                        <GenerateGameList />
+                    </main>
+                </div>
+            </div>
+        </>
     );
 }
 

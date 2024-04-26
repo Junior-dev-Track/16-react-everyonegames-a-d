@@ -23,7 +23,7 @@ body{
 }
 .imageGame {
   width :100%;
-  height:60%;
+  height:45%;
 }
 .flexBox {
   display:flex;
@@ -57,13 +57,9 @@ body{
 
 .Colors:hover {
   color: #9e9d9d;
-
-  .SVGInline-svg:hover path {
-    fill: #9e9d9d;
-  }
 }
 
-span:hover > .SVGInline-svg path {
+.SVGInline-svg:hover path {
   fill: #9e9d9d;
 }
 
@@ -73,10 +69,8 @@ span:hover > .SVGInline-svg path {
   margin-right:10px;
 }
 
-
-
 .nav__menutitle {
-  padding-top:20px;
+  margin-top:30px;
   font-size: 24px;
   line-height: 28px;
   font-weight: 400;
