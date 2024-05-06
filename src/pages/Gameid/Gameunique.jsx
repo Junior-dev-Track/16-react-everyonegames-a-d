@@ -1,34 +1,168 @@
 import Header from "../Header/Header";
-import { getApiGamesId } from "../../api/Api";
+import { getApiGamesId, getApiGamesVideoUrl, getApiGameScreenshots } from "../../api/Api";
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from "react";
+import Aside from "../../components/Aside.jsx";
+import '../../styles/_Gameunique.scss';
 
+
+const GameDescription = ({ description }) => {
+    const [showFullDescription, setShowFullDescription] = useState(false);
+    const toggleDescription = () => {
+        setShowFullDescription(!showFullDescription);
+    };
+
+    // Check if description is defined before using slice
+    const slicedDescription = description ? description.slice(0, 300) : '';
+
+    return (
+        <div className="gameu__about">
+            <h2>About</h2>
+            <div className="gameu__about-description">
+                <p>
+                    {showFullDescription ? description : slicedDescription}
+                </p>
+                {description && description.length > 300 && (
+                    <button onClick={toggleDescription}>
+                        {showFullDescription ? 'Read less' : 'Read more'}
+                    </button>
+                )}
+            </div>
+        </div>
+    );
+};
+
+function VideoUrlReturn() {
+    const [videoUrl, setVideoUrl] = useState("");
+    const {id} = useParams();
+    useEffect(() => {
+        async function getGameVideoLoad(id) {
+            const gameVideoLink = await getApiGamesVideoUrl(id);
+            setVideoUrl(gameVideoLink);
+        }
+
+        getGameVideoLoad(id).catch(error => console.error(error));
+    }, [id]);
+    return (
+        <>
+
+            {videoUrl ? (
+                <div className="gameu__video">
+                    <video className="game-card-video__video" controls>
+                        <source src={videoUrl} type="video/mp4"/>
+                    </video>
+                </div>
+            ) : (
+                <div className="gameu__novideo">No video...</div>
+            )}
+        </>
+    );
+}
 
 // eslint-disable-next-line react/prop-types
 function Gameunique() {
     const [gameId, setGameId] = useState({});
+    const [screenshots, setScreenshots] = useState([]); // State to store screenshots
     const {id} = useParams();
 
     useEffect(() => {
         async function getGameLoad(id) {
             const gameData = await getApiGamesId(id);
             setGameId(gameData);
+            // Fetch screenshots
+            const screenshotsData = await getApiGameScreenshots(id);
+            setScreenshots(screenshotsData.results);
         }
 
         getGameLoad(id).catch(error => console.error(error));
     }, [id]);
 
 
+
     return (
         <>
-            <h1>{gameId.id}</h1>
+            <Header/>
             <div className="container">
-                <aside className="menu">
-                    <Header/>
-                </aside>
-                <div className="mainBloc">
-                    <img src={gameId.background_image} alt={gameId.name}/>
-                    <>{gameId.description}</>
+                <div className="flexBox">
+                    <Aside/>
+                    <div className="gameu__content-wrap">
+                        <div className="gameu__content-colonne">
+                            <div className="gameu__content-firstcol">
+                                <div className="gameu__head">
+                                    <div className="game__head-meta"></div>
+                                    <h1>{gameId.name}</h1>
+                                </div>
+                                <div className="gameu__rating">
+                                    <div className="gameu__rating-left">
+                                        {gameId.ratings?.[0]?.title}
+                                    </div>
+                                    <div className="gameu__rating-center">
+
+                                    </div>
+                                    <div className="gameu__rating-right">
+
+                                    </div>
+                                </div>
+                                <div className="gameu__ratingfull">
+                                    {gameId.ratings?.map((rating) => {
+                                        let ratingComponent;
+                                        if (rating.title === "exceptional") {
+                                            ratingComponent = (
+                                                <>
+                                                    <div className="gameu__ratinggreen"></div>
+                                                    <div className="gameu__ratinggtext">{rating.title}</div>
+                                                    <div className="gameu__ratingcount">{rating.count}</div>
+                                                </>
+                                            );
+                                        } else if (rating.title === "recommended") {
+                                            ratingComponent = (
+                                                <>
+                                                    <div className="gameu__ratingblue"></div>
+                                                    <div className="gameu__ratinggtext">{rating.title}</div>
+                                                    <div className="gameu__ratingcount">{rating.count}</div>
+                                                </>
+                                            );
+                                        } else if (rating.title === "meh") {
+                                            ratingComponent = (
+                                                <>
+                                                    <div className="gameu__ratingorange"></div>
+                                                    <div className="gameu__ratinggtext">{rating.title}</div>
+                                                    <div className="gameu__ratingcount">{rating.count}</div>
+                                                </>
+
+                                            );
+                                        } else {
+                                            ratingComponent = (
+                                                <>
+                                                    <div className="gameu__ratingred"></div>
+                                                    <div className="gameu__ratinggtext">{rating.title}</div>
+                                                    <div className="gameu__ratingcount">{rating.count}</div>
+                                                </>
+                                            );
+                                        }
+                                        return (
+                                            <div className="gameu__ratingfull-container" key={rating.title}>
+                                                {ratingComponent}
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                                <div className="gameu__about">
+                                    <div className="gameu__about-description">
+                                        <GameDescription description={gameId.description_raw}/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="gameu__content-secondcol">
+                                <VideoUrlReturn/>
+                                <div className="gameu__photo">
+                                    {screenshots.map((screenshot) => (
+                                        <img key={screenshot.id} src={screenshot.image} alt="Screenshot"/>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </>

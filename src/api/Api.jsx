@@ -26,6 +26,25 @@ export async function getApiGamesId (id) {
     }
 }
 
+export async function getApiGameScreenshots (id) {
+    try {
+        const {data} = await axios.get(`${API_URL}games/${id}/screenshots?key=${API_KEY}`);
+        return data;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export async function getApiGamesVideoUrl (id) {
+    try {
+        const response = await axios.get(`${API_URL}games/${id}/movies?key=${API_KEY}`);
+        const videoUrl = response.data.results[0]?.data['480']; // Get video URL from response
+        return videoUrl;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 /*export async function getApiGenres () {
     try {
         const {data} = await axios.get(`${API_URL}genres?key=${API_KEY}`);

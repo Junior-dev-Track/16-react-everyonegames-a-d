@@ -1,0 +1,143 @@
+.gameu__content-wrap {
+  width: 100%;
+}
+
+.gameu__content-colonne {
+  display: flex;
+}
+
+.gameu__content-firstcol {
+
+  width:50%;
+}
+
+.gameu__content-secondcol {
+
+  width:50%;
+  margin-left:48px;
+}
+
+.gameu__content-colonne img {
+    width:150px;
+    height:150px;
+  }
+
+.gameu__head {
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  min-height: 100px;
+}
+
+.gameu__head h1 {
+  font-size: 72px;
+  line-height: 74px;
+  font-weight: 700;
+  overflow-wrap: break-word;
+  text-align: left;
+  margin: 48px 0 24px;
+}
+.gameu__rating {
+  display:flex;
+}
+
+.gameu__rating-left {
+  font-size: 24px;
+  font-weight: 700;
+  padding-bottom: 8px;
+  letter-spacing: 1.2px;
+  text-align: left;
+  text-transform: capitalize;
+}
+.gameu__rating {
+  display:flex;
+}
+.gameu__ratingfull {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.gameu__ratingfull-container:first-child {
+  margin-left:0px;
+}
+
+.gameu__ratingfull-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 17px;
+  font-size: 14px;
+  line-height: normal;
+  font-weight: 700;
+  text-transform: capitalize;
+  margin-left: 5px;
+  transition: border-color 0.3s ease; /* Ajoute une transition fluide */
+  border: 1px solid transparent; /* Définit une bordure transparente */
+  border-radius: 15px;
+  padding: 5px;
+}
+
+.gameu__ratingfull-container:hover {
+  border-color: #cccccc; /* Change la couleur de la bordure au survol */
+}
+.gameu__ratinggreen,
+.gameu__ratingblue,
+.gameu__ratingorange,
+.gameu__ratingred {
+  display: flex;
+  align-items: center;
+  margin-right: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.gameu__ratinggreen {
+  background-image: linear-gradient(180deg, #b4ec51, #429321);
+}
+
+.gameu__ratingblue {
+  background-image: linear-gradient(0deg, #4354b9, #649bff);
+}
+
+.gameu__ratingorange {
+  background-image: linear-gradient(180deg, #fad961, #f76b1c);
+}
+.gameu__ratingred {
+  background-image: linear-gradient(180deg, #ff5764, #f11a2a);
+}
+
+.gameu__ratingcount {
+margin-left: 8px;
+font-size: 14px;
+color: hsla(0, 0%, 100%, .4);
+}
+
+.gameu__ratinggtext {
+  padding-left: 5px;
+}
+.gameu__about {
+  margin-top: 32px;
+  text-align: left;
+}
+.gameu__about-description {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.gameu__novideo {
+  padding-top:50px;
+}
+.game-card-video__video {
+  width:65%;
+  height:150px;
+  padding-top:50px;
+}
+
+.gameu__photo img {
+  width:45%;
+  height:100px;
+  margin:5px;
+  border-radius:10px;
+}
