@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import {Routes, Route, BrowserRouter, Navigate} from "react-router-dom";
+import {Routes, Route, BrowserRouter} from "react-router-dom";
 import Main from './Main.jsx'
 import Gameid from "./pages/Gameid/Gameunique";
 import Thisweek from "./pages/Releases/Thisweek";
@@ -17,7 +17,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 <Route path="thisweek" element={<Thisweek/>}/>
                 <Route path="nextweek" element={<Nextweek/>}/>
                 <Route path="goty" element={<Goty/>}/>
-                <Route path="Api" element={<Navigate to="Api"/>}/>
             </Routes>
         </React.StrictMode>
     </BrowserRouter>

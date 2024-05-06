@@ -9,6 +9,8 @@
 
 main{
   display: flex;
+  justify-content: center;
+  padding-top:40px;
 }
 
 body{
@@ -55,11 +57,7 @@ body{
   color:white;
 }
 
-.Colors:hover {
-  color: #9e9d9d;
-}
-
-.SVGInline-svg:hover path {
+.Colors:hover .SVGInline-svg path {
   fill: #9e9d9d;
 }
 
@@ -76,7 +74,11 @@ body{
   font-weight: 400;
   margin-bottom: 16px;
   font-weight: 700;
-  color: hsla(0, 0%, 100%, .4);
+  color:#FFF;
+}
+
+.nav__menutitle a:hover {
+  color:#9e9d9d;
 }
 
 .nav__menulink {
@@ -84,4 +86,3 @@ body{
   line-height: normal;
   font-weight: 400;
 }
-

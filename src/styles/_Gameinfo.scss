@@ -1,20 +1,33 @@
 
-.bgGames{
+.bgGames {
     background-color: #0A0A0A;
     width:30%;
     height:fit-content;
-}
-.bgGames__infos h2 {
-    margin:15px 0px;
-}
-.bgGames__infos p {
-    margin-bottom:15px;
+    text-align: left;
+
+    h2 {
+        margin:15px 15px;
+        color:#FFF;
+    }
+
+    a {
+        text-decoration:none;
+    }
+    h2:hover {
+        color: #9e9d9d;
+    }
+
+    p {
+        margin:15px 15px;
+    }
 }
 
 .imageGame{
+    width:100%;
     border-radius: 15px 15px 0 0;
 }
 
 article{
     border-radius: 15px;
 }
+

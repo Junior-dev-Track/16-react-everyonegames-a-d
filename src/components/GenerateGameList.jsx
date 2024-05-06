@@ -23,7 +23,7 @@ function GenerateGameList() {
         return (
             <div>
                 <h1>Erreur</h1>
-                <p>Une erreur est survenue lors de la récupération des données via l'API.</p>
+                <p>Une erreur est survenue lors de la récupération des données via l&amp:apos;API. </p>
                 <p>{errorApi}</p>
             </div>
         );
