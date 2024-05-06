@@ -1,40 +1,92 @@
 import Gameinfo from "./Gameinfo.jsx";
-import {useEffect, useState} from "react";
-import {getApiList} from "../api/Api.jsx";
-
+import { useEffect, useRef, useState } from "react";
+import { getApiList } from "../api/Api.jsx";
 
 function GenerateGameList() {
-
     const [gameList, setGameList] = useState([]);
     const [redirectToErrorPage, setRedirectToErrorPage] = useState(false);
-    let [errorApi = [], setErrorApi] = useState([]);
+    const [errorApi, setErrorApi] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [page, setPage] = useState(1);
+    const loader = useRef(null);
+    const loadedGameIds = useRef(new Set());
 
     useEffect(() => {
-        getApiList()
-            .then(data => setGameList(data))
-            .catch(error => {
+        const loadInitialData = async () => {
+            try {
+                const data = await getApiList(page);
+                const newGames = data.results.filter(game => !loadedGameIds.current.has(game.id));
+                setGameList((prevGameList) => [...prevGameList, ...newGames]);
+                newGames.forEach(game => loadedGameIds.current.add(game.id));
+            } catch (error) {
                 setErrorApi(error);
                 setRedirectToErrorPage(true);
-            });
-    }, []);
+            } finally {
+                setLoading(false);
+            }
+        };
 
+        loadInitialData().then(r => console.log("Initial data loaded"));
+
+        return () => {}; // Cleanup function
+    }, [page]);
+
+    const handleObserver = (entries, observer) => {
+        console.log('Entries:', entries);
+        console.log('Observer:', observer);
+        const target = entries[0];
+        if (target.isIntersecting) {
+            setPage((prevPage) => prevPage + 1);
+        }
+    };
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(handleObserver, {
+            root: null,
+            rootMargin: '20px',
+            threshold: 1.0,
+        });
+        if (loader.current) {
+            observer.observe(loader.current);
+        }
+
+        return () => observer.disconnect();
+    }, []);
 
     if (redirectToErrorPage) {
         return (
             <div>
-                <h1>Erreur</h1>
-                <p>Une erreur est survenue lors de la récupération des données via l&amp:apos;API. </p>
+                <h1>Error</h1>
+                <p>An error occurred while fetching data from the API.</p>
                 <p>{errorApi}</p>
             </div>
         );
     }
 
+    const columns = [[], [], []];
+
+    gameList.forEach((game, index) => {
+        columns[index % 3].push(
+            <Gameinfo gameInfo={game} key={game.id} />
+        );
+    });
 
     return (
         <div className="mainBloc">
-            {gameList.results?.map((game) => (
-                <Gameinfo gameInfo={game} key={game.id}/>
-            ))}
+            {loading ? (
+                <p>Loading...</p>
+            ) : (
+                <>
+                    {columns.map((column, index) => (
+                        <div className="column" key={index}>
+                            {column}
+                        </div>
+                    ))}
+                    <div ref={loader}>
+                        <h2>Loading...</h2>
+                    </div>
+                </>
+            )}
         </div>
     );
 }

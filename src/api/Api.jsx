@@ -3,9 +3,9 @@ import axios from 'axios';
 const API_URL = import.meta.env.VITE_API_URL;
 const API_KEY = import.meta.env.VITE_API_KEY;
 
-export function getApiList() {
+export function getApiList(page) {
     return new Promise((resolve, reject) => {
-        axios.get(`${API_URL}games?page_size=6&key=${API_KEY}`)
+        axios.get(`${API_URL}games?page=${page}&page_size=15&key=${API_KEY}`)
             .then(response => {
                 resolve(response.data);
             })

@@ -2,8 +2,7 @@ import Header from "./pages/Header/Header.jsx";
 
 import GenerateGameList from "./components/GenerateGameList.jsx";
 import Aside from "./components/Aside.jsx";
-import Gameinfo from "./components/Gameinfo";
-import {Link} from "react-router-dom";
+import Footer from "./pages/Footer/Gameunique.jsx";
 
 function Main() {
 
@@ -26,6 +25,7 @@ function Main() {
                         </div>
                         <GenerateGameList />
                     </main>
+                    <Footer />
                 </div>
             </div>
         </>

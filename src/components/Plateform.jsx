@@ -1,4 +1,4 @@
-
+/* eslint-disable react/prop-types */
 import WindowsIcon from '/src/assets/icon/plateform/Windows.svg';
 import Playstation from '/src/assets/icon/plateform/Playstation.svg';
 import Xbox from '/src/assets/icon/plateform/Xbox.svg';
@@ -7,8 +7,8 @@ import Nintendo from '/src/assets/icon/plateform/Nintendo.svg';
 import Linux from '/src/assets/icon/plateform/Linux.svg';
 import Android from '/src/assets/icon/plateform/Android.svg';
 import Telephone from '/src/assets/icon/plateform/Telephone.svg';
+import Internet from '/src/assets/icon/plateform/Internet.svg';
 
-// eslint-disable-next-line react/prop-types
 const Plateform = ({imageInfo}) => {
 
     const display_plateform = (id_plateform) => {
@@ -29,8 +29,10 @@ const Plateform = ({imageInfo}) => {
                 return <img className="resizeImage" src={Linux} alt="Linux"/>;
             case 8 :
                 return <img className="resizeImage" src={Android} alt="Android"/>;
+            case 14 :
+                return <img className="resizeImage" src={Internet} alt="Internet"/>;
             default :
-                return `Need icon ${id_plateform}`;
+                return `${id_plateform}`;
         }
     }
 

@@ -11,10 +11,14 @@ const Gameinfo = ({gameInfo}) => {
         <>
             <article className="bgGames" key={gameInfo.id}>
                 <img className="imageGame" src={gameInfo.background_image} alt={gameInfo.name}/>
-                <Link to={`game/${gameInfo.id}`}><h2>{gameInfo.name}</h2></Link>
-                <p>{gameInfo.released}</p>
-                <Genres genreInfo={gameInfo.genres}/>
-                <Plateform imageInfo={gameInfo.parent_platforms}/>
+                <div className="P-L">
+                    <Plateform imageInfo={gameInfo.parent_platforms ? gameInfo.parent_platforms : 'N/A'}/>
+                    <Link to={`game/${gameInfo.id}`}><h2>{gameInfo.name}</h2></Link>
+                </div>
+                <div className="gameHide test">
+                    <p className="gameHide">{gameInfo.released ? gameInfo.released : 'N/A'}</p>
+                    <Genres genreInfo={gameInfo.genres ? gameInfo.genres : 'N/A'}/>
+                </div>
             </article>
         </>
     );

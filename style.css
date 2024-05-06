@@ -58,24 +58,64 @@ header {
 
 .bgGames {
   background-color: #0A0A0A;
-  width: 30%;
+  width: 100%;
   height: fit-content;
+  text-align: left;
+  margin-top: 15px;
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.07);
+}
+.bgGames .P-L {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 15px;
+}
+.bgGames h2 {
+  margin: 15px 15px;
+  color: #FFF;
+}
+.bgGames a {
+  text-decoration: none;
+}
+.bgGames h2:hover {
+  color: #9e9d9d;
+}
+.bgGames p {
+  margin: 15px 15px;
 }
 
-.bgGames__infos h2 {
-  margin: 15px 0px;
+.test {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  height: 0;
+  overflow: hidden;
 }
 
-.bgGames__infos p {
-  margin-bottom: 15px;
+.bgGames:hover {
+  background-color: #1A1A1A;
+  transition: background-color 0.5s ease;
+}
+.bgGames:hover .gameHide {
+  opacity: 1;
+  visibility: visible;
+}
+.bgGames:hover .imagePlateform {
+  display: flex;
 }
 
 .imageGame {
+  width: 100%;
   border-radius: 15px 15px 0 0;
 }
 
 article {
   border-radius: 15px;
+}
+
+.gameHide {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s;
 }
 
 #root {
@@ -85,6 +125,10 @@ article {
 
 main {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 40px;
+  width: 85%;
 }
 
 body {
@@ -108,15 +152,16 @@ body {
 }
 
 .asideLeft {
-  width: 100%;
+  width: 15%;
 }
 
 .mainBloc {
-  display: flex;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 20px;
-  width: 85%;
+  column-gap: 15px;
+  width: 100%;
 }
 
 .nav__menu {
@@ -136,11 +181,7 @@ body {
   color: white;
 }
 
-.Colors:hover {
-  color: #9e9d9d;
-}
-
-.SVGInline-svg:hover path {
+.Colors:hover .SVGInline-svg path {
   fill: #9e9d9d;
 }
 
@@ -157,7 +198,11 @@ body {
   font-weight: 400;
   margin-bottom: 16px;
   font-weight: 700;
-  color: hsla(0, 0%, 100%, 0.4);
+  color: #FFF;
+}
+
+.nav__menutitle a:hover {
+  color: #9e9d9d;
 }
 
 .nav__menulink {
