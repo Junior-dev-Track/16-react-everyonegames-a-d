@@ -44,3 +44,13 @@ export async function getApiGamesVideoUrl (id) {
         console.log(error);
     }
 }
+
+export async function getApiGoty() {
+    try {
+        const { data } = await axios.get(`${API_URL}games?key=${API_KEY}`);
+        return data;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
