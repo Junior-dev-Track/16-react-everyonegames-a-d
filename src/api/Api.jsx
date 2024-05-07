@@ -5,13 +5,13 @@ const API_KEY = import.meta.env.VITE_API_KEY;
 
 export function getApiList(page) {
     return new Promise((resolve, reject) => {
-        axios.get(`${API_URL}games?page=${page}&page_size=15&key=${API_KEY}`)
+        axios.get(`${API_URL}games?page=${page}&page_size=20&key=${API_KEY}`)
             .then(response => {
-                resolve(response.data);
+                return resolve(response.data);
             })
             .catch(error => {
                 console.log(error);
-                reject(error);
+                return reject(error);
             });
     });
 }
@@ -38,19 +38,9 @@ export async function getApiGameScreenshots (id) {
 export async function getApiGamesVideoUrl (id) {
     try {
         const response = await axios.get(`${API_URL}games/${id}/movies?key=${API_KEY}`);
-        const videoUrl = response.data.results[0]?.data['480']; // Get video URL from response
-        return videoUrl;
+         // Get video URL from response
+        return response.data.results[0]?.data['480'];
     } catch (error) {
         console.log(error);
     }
 }
-
-/*export async function getApiGenres () {
-    try {
-        const {data} = await axios.get(`${API_URL}genres?key=${API_KEY}`);
-        return data;
-    } catch (error) {
-        console.log(error);
-    }
-}
-*/

@@ -3,11 +3,11 @@ const GenresGames = ({genreInfo}) => {
 
     return (
         <>
-            <div className="genreInfo gameHide">
+            <div className="genreInfo gameHide moreTextInfo">
                 {genreInfo.map(element => (
-                    <div key={element.id}>
-                        <p>{element.name}</p>
-                    </div>
+                    <span key={element.id}>
+                        <span>{element.name} </span>
+                    </span>
                 ))}
             </div>
         </>

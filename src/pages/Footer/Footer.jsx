@@ -7,8 +7,8 @@ function Footer() {
     return (
         <>
             <footer>
-                <p>
-                    © 2021 - GameApi - All rights reserved.
+                <p className="allrights">
+                    © 2024 - Game List - All rights reserved.
                 </p>
             </footer>
         </>

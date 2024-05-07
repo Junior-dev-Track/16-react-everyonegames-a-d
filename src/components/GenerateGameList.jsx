@@ -1,6 +1,6 @@
 import Gameinfo from "./Gameinfo.jsx";
 import { useEffect, useRef, useState } from "react";
-import { getApiList } from "../api/Api.jsx";
+import {getApiList} from "../api/Api.jsx";
 
 function GenerateGameList() {
     const [gameList, setGameList] = useState([]);
@@ -26,14 +26,12 @@ function GenerateGameList() {
             }
         };
 
-        loadInitialData().then(r => console.log("Initial data loaded"));
+        loadInitialData();
 
         return () => {}; // Cleanup function
     }, [page]);
 
-    const handleObserver = (entries, observer) => {
-        console.log('Entries:', entries);
-        console.log('Observer:', observer);
+    const handleObserver = (entries) => {
         const target = entries[0];
         if (target.isIntersecting) {
             setPage((prevPage) => prevPage + 1);
@@ -43,8 +41,8 @@ function GenerateGameList() {
     useEffect(() => {
         const observer = new IntersectionObserver(handleObserver, {
             root: null,
-            rootMargin: '20px',
-            threshold: 1.0,
+            rootMargin: '50px',
+            threshold: 0.5,
         });
         if (loader.current) {
             observer.observe(loader.current);
@@ -63,15 +61,17 @@ function GenerateGameList() {
         );
     }
 
-    const columns = [[], [], []];
+    const columns = [[], [], [], []];
 
     gameList.forEach((game, index) => {
-        columns[index % 3].push(
+        columns[index % 4].push(
             <Gameinfo gameInfo={game} key={game.id} />
         );
     });
 
+
     return (
+
         <div className="mainBloc">
             {loading ? (
                 <p>Loading...</p>
@@ -82,11 +82,11 @@ function GenerateGameList() {
                             {column}
                         </div>
                     ))}
-                    <div ref={loader}>
-                        <h2>Loading...</h2>
-                    </div>
                 </>
             )}
+            <div ref={loader}>
+                <p>Loading...</p>
+            </div>
         </div>
     );
 }

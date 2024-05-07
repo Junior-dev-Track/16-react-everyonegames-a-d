@@ -2,7 +2,7 @@ import Header from "./pages/Header/Header.jsx";
 
 import GenerateGameList from "./components/GenerateGameList.jsx";
 import Aside from "./components/Aside.jsx";
-import Footer from "./pages/Footer/Gameunique.jsx";
+import Footer from "./pages/Footer/Footer.jsx";
 
 function Main() {
 
@@ -25,8 +25,8 @@ function Main() {
                         </div>
                         <GenerateGameList />
                     </main>
-                    <Footer />
                 </div>
+                <Footer />
             </div>
         </>
     )
