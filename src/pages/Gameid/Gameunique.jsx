@@ -4,8 +4,9 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import Aside from "../../components/Aside.jsx";
 import '../../styles/_Gameunique.scss';
+import Plateform from "../../components/Plateform.jsx";
 
-
+// fonction qui affiche un bouton read more
 const GameDescription = ({ description }) => {
     const [showFullDescription, setShowFullDescription] = useState(false);
     const toggleDescription = () => {
@@ -32,6 +33,7 @@ const GameDescription = ({ description }) => {
     );
 };
 
+//fonction qui retourne l url de la video si elle existe
 function VideoUrlReturn() {
     const [videoUrl, setVideoUrl] = useState("");
     const {id} = useParams();
@@ -45,7 +47,6 @@ function VideoUrlReturn() {
     }, [id]);
     return (
         <>
-
             {videoUrl ? (
                 <div className="gameu__video">
                     <video className="game-card-video__video" controls>
@@ -53,11 +54,18 @@ function VideoUrlReturn() {
                     </video>
                 </div>
             ) : (
-                <div className="gameu__novideo">No video...</div>
+                <div className="gameu__novideo"></div>
             )}
         </>
     );
 }
+
+// Fonction pour formater la date
+    function formatDate(dateString) {
+        const dateconversion = { year: 'numeric', month: 'short', day: '2-digit' };
+        const date = new Date(dateString);
+        return date.toLocaleDateString('en-US', dateconversion);
+    }
 
 // eslint-disable-next-line react/prop-types
 function Gameunique() {
@@ -77,8 +85,6 @@ function Gameunique() {
         getGameLoad(id).catch(error => console.error(error));
     }, [id]);
 
-
-
     return (
         <>
             <Header/>
@@ -89,8 +95,18 @@ function Gameunique() {
                         <div className="gameu__content-colonne">
                             <div className="gameu__content-firstcol">
                                 <div className="gameu__head">
-                                    <div className="game__head-meta"></div>
+                                    <div className="gameu__head-meta">
+                                        <div className="gameu__head-metadate">{formatDate(gameId.released)}</div>
+                                        <div className="gameu__head-metaicons">
+                                            <Plateform
+                                                imageInfo={gameId.parent_platforms ? gameId.parent_platforms : []}/>
+                                        </div>
+                                        <div className="gameu__head-metaplayedtime">
+                                            AVERAGE PLAYTIME : {gameId.playtime} HOURS
+                                        </div>
+                                    </div>
                                     <h1>{gameId.name}</h1>
+
                                 </div>
                                 <div className="gameu__rating">
                                     <div className="gameu__rating-left">
@@ -102,6 +118,18 @@ function Gameunique() {
                                     <div className="gameu__rating-right">
 
                                     </div>
+                                </div>
+                                <div className="gameu__ratingbar">
+                                    {gameId.ratings?.map((rating) => {
+                                        return (
+                                            <div
+                                                key={rating.id}
+                                                className={`gameu__ratingbar-${rating.title}`}
+                                                style={{width: `${rating.percent}%`}}
+                                            >
+                                            </div>
+                                        );
+                                    })}
                                 </div>
                                 <div className="gameu__ratingfull">
                                     {gameId.ratings?.map((rating) => {

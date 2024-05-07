@@ -27,15 +27,46 @@
   flex-direction:column;
   justify-content: center;
   min-height: 100px;
+  margin-top:20px;
+  text-align: left;
+  font-size: 12px;
+  line-height: normal;
+  font-weight: 400;
+}
+.gameu__head-meta {
+  max-width: fit-content;
+  margin-right: 10px;
+  display:flex;
+  flex-direction: row;
+  display:flex;
+  align-items: flex-end;
 }
 
+.gameu__head-metadate {
+  padding: 2px 7.5px;
+  box-sizing: border-box;
+  color: #000;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.gameu__head-metaicons img {
+  width: 16px;
+  height: 16px;
+  padding-left:10px;
+}
+
+.gameu__head-metaplayedtime {
+  padding-left:10px;
+  font-size: 10px;
+}
 .gameu__head h1 {
   font-size: 72px;
   line-height: 74px;
   font-weight: 700;
   overflow-wrap: break-word;
   text-align: left;
-  margin: 48px 0 24px;
+  margin: 10px 0 48px 0px;
 }
 .gameu__rating {
   display:flex;
@@ -81,6 +112,46 @@
 .gameu__ratingfull-container:hover {
   border-color: #cccccc; /* Change la couleur de la bordure au survol */
 }
+.gameu__ratingbar {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.gameu__ratingbar-exceptional {
+  background-image: linear-gradient(180deg, #b4ec51, #429321);
+}
+
+.gameu__ratingbar-recommended {
+  background-image: linear-gradient(0deg, #4354b9, #649bff);
+}
+
+.gameu__ratingbar-meh {
+  background-image: linear-gradient(180deg, #fad961, #f76b1c);
+}
+
+.gameu__ratingbar-skip {
+  background-image: linear-gradient(180deg, #ff5764, #f11a2a);
+}
+
+.gameu__ratingbar div {
+  margin-top:15px;
+  padding-top:10px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  color: white;
+}
+
+.gameu__ratingbar div:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.gameu__ratingbar div:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
 .gameu__ratinggreen,
 .gameu__ratingblue,
 .gameu__ratingorange,
@@ -126,18 +197,20 @@ color: hsla(0, 0%, 100%, .4);
   line-height: 22px;
 }
 
-.gameu__novideo {
+.gameu__video {
   padding-top:50px;
 }
 .game-card-video__video {
-  width:65%;
-  height:150px;
-  padding-top:50px;
+  width: 92%;
+  height: 90%;
+  object-fit: cover;
+  border-radius: 10px;
+  overflow:hidden;
 }
 
 .gameu__photo img {
   width:45%;
-  height:100px;
+  height:125px;
   margin:5px;
   border-radius:10px;
 }
