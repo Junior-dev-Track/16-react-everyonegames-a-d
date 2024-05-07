@@ -11,7 +11,7 @@ export function getApiList(page) {
             })
             .catch(error => {
                 console.log(error);
-                return reject(error);
+                return reject(410);
             });
     });
 }

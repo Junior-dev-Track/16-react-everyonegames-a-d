@@ -4,13 +4,13 @@ import Plateform from "./Plateform.jsx";
 import Genres from "./GenresGames.jsx";
 import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
-import {getApiGamesVideoUrl} from "../api/Api.jsx";
+import {getApiGameScreenshots, getApiGamesVideoUrl} from "../api/Api.jsx";
 import GameComponent from "./GameComponent.jsx";
-
 
 const Gameinfo = ({gameInfo}) => {
 
     const [videoUrl, setVideo] = useState([]);
+    const [screenshots, setScreenshots] = useState([]);
 
     useEffect(() => {
         const fetchVideo = async () => {
@@ -23,13 +23,25 @@ const Gameinfo = ({gameInfo}) => {
         };
 
         fetchVideo();
+
+        const fetchScreenshots = async () => {
+            try {
+                const response = await getApiGameScreenshots(gameInfo.id);
+                setScreenshots(response.results);
+            } catch (error) {
+                console.error('Erreur lors de la récupération des screenshots:', error);
+            }
+        }
+
+        fetchScreenshots();
+
     }, [gameInfo.id]);
 
 
     return (
         <>
             <article className="bgGames" key={gameInfo.id}>
-                <GameComponent gameInfo={gameInfo} videoUrl={videoUrl}/>
+                <GameComponent gameInfo={gameInfo} videoUrl={videoUrl} screenshots={screenshots}/>
                 <div className="P-L">
                     <Plateform imageInfo={gameInfo.parent_platforms ? gameInfo.parent_platforms : 'N/A'}/>
                     <Link to={`/game/${gameInfo.id}`}><h2>{gameInfo.name}</h2></Link>

@@ -5,7 +5,6 @@ import {getApiList} from "../api/Api.jsx";
 function GenerateGameList() {
     const [gameList, setGameList] = useState([]);
     const [redirectToErrorPage, setRedirectToErrorPage] = useState(false);
-    const [errorApi, setErrorApi] = useState(null);
     const [loading, setLoading] = useState(true);
     const [page, setPage] = useState(1);
     const loader = useRef(null);
@@ -15,18 +14,22 @@ function GenerateGameList() {
         const loadInitialData = async () => {
             try {
                 const data = await getApiList(page);
+                if (data === 410) {
+                    setRedirectToErrorPage(true);
+                }
                 const newGames = data.results.filter(game => !loadedGameIds.current.has(game.id));
                 setGameList((prevGameList) => [...prevGameList, ...newGames]);
                 newGames.forEach(game => loadedGameIds.current.add(game.id));
             } catch (error) {
-                setErrorApi(error);
                 setRedirectToErrorPage(true);
             } finally {
                 setLoading(false);
             }
         };
 
-        loadInitialData();
+
+        loadInitialData()
+
 
         return () => {}; // Cleanup function
     }, [page]);
@@ -56,7 +59,6 @@ function GenerateGameList() {
             <div>
                 <h1>Error</h1>
                 <p>An error occurred while fetching data from the API.</p>
-                <p>{errorApi}</p>
             </div>
         );
     }

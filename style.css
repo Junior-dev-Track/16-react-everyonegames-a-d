@@ -74,6 +74,15 @@ header {
   transition: scale 0.4s ease;
   scale: 1;
 }
+.bgGames:hover .imageGame {
+  opacity: 1;
+}
+.bgGames:hover .carouselContainer {
+  position: relative;
+}
+.bgGames:hover .gameHide {
+  display: block;
+}
 .bgGames .P-L {
   padding: 15px 15px 20px;
 }
@@ -108,6 +117,15 @@ header {
   color: #9e9d9d;
   transition: color 0.4s ease;
 }
+.hidden {
+  display: none;
+}
+
+.carousel .slide {
+  height: inherit;
+  width: 100%;
+}
+
 .bgGames:hover {
   transition: scale 0.4s ease;
   scale: 1.05;
@@ -138,11 +156,41 @@ article {
 }
 
 .videoGame {
-  width: auto;
+  width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 10px 10px 0 0;
   overflow: hidden;
+}
+
+.carouselImage {
+  border-radius: 10px 10px 0 0;
+}
+
+.carouselIcon {
+  transform: rotate(90deg);
+  display: block;
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+}
+.carouselIcon img {
+  width: 44px;
+  height: 44px;
+}
+
+.videoIcon {
+  display: block;
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+}
+.videoIcon img {
+  width: 44px;
+  height: 44px;
+}
+.videoIcon img:hover {
+  transition: scale 0.4s ease;
 }
 
 #root {
