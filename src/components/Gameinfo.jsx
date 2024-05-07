@@ -26,14 +26,13 @@ const Gameinfo = ({gameInfo}) => {
     }, [gameInfo.id]);
 
 
-
     return (
         <>
             <article className="bgGames" key={gameInfo.id}>
                 <GameComponent gameInfo={gameInfo} videoUrl={videoUrl}/>
                 <div className="P-L">
                     <Plateform imageInfo={gameInfo.parent_platforms ? gameInfo.parent_platforms : 'N/A'}/>
-                    <Link to={`game/${gameInfo.id}`}><h2>{gameInfo.name}</h2></Link>
+                    <Link to={`/game/${gameInfo.id}`}><h2>{gameInfo.name}</h2></Link>
                     <div className="gameHide">
                         <div className="release moreInfoGame border">
                             <span className="textInfo">Release date:</span>

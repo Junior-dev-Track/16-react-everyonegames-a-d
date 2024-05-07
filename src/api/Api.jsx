@@ -47,7 +47,7 @@ export async function getApiGamesVideoUrl (id) {
 
 export async function getApiGoty() {
     try {
-        const { data } = await axios.get(`${API_URL}games?key=${API_KEY}`);
+        const {data} = await axios.get(`${API_URL}games?key=${API_KEY}&metacritic=90,100`);
         return data;
     } catch (error) {
         console.log(error);

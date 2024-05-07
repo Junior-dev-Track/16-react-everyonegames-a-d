@@ -38,7 +38,6 @@
   margin-right: 10px;
   display:flex;
   flex-direction: row;
-  display:flex;
   align-items: flex-end;
 }
 
@@ -213,4 +212,30 @@ color: hsla(0, 0%, 100%, .4);
   height:125px;
   margin:5px;
   border-radius:10px;
+}
+
+.gameu__inf {
+  display:flex;
+  flex-wrap: wrap;
+  margin-top:32px;
+  width:100%;
+}
+
+.gameu__inf-block {
+  width:50%;
+}
+.gameu__inf-title {
+  margin-top: 10px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: hsla(0, 0%, 100%, .2);
+  text-align: left;
+}
+.gameu__inf-text {
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  word-spacing: 2px;
+  text-align: left;
 }

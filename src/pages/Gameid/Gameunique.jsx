@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Aside from "../../components/Aside.jsx";
 import '../../styles/_Gameunique.scss';
 import Plateform from "../../components/Plateform.jsx";
+import Footer from "../Footer/Footer.jsx";
 
 // fonction qui affiche un bouton read more
 const GameDescription = ({ description }) => {
@@ -180,6 +181,32 @@ function Gameunique() {
                                         <GameDescription description={gameId.description_raw}/>
                                     </div>
                                 </div>
+                                <div className="gameu__inf">
+                                    <div className="gameu__inf-block">
+                                        <div className="gameu__inf-title">Platforms</div>
+                                        <div className="gameu__inf-text">
+                                            {gameId.platforms?.map(platform => platform.platform.name).join(', ')}
+                                        </div>
+                                    </div>
+                                    <div className="gameu__inf-block">
+                                        <div className="gameu__inf-title">Metascore</div>
+                                        <div className="gameu__inf-text">
+                                            {gameId.metacritic}
+                                        </div>
+                                    </div>
+                                    <div className="gameu__inf-block">
+                                        <div className="gameu__inf-title">Genre</div>
+                                        <div className="gameu__inf-text">
+                                            {gameId.genres && gameId.genres.length > 0 ? gameId.genres[0].name : "Genre inconnu"}
+                                        </div>
+                                    </div>
+                                    <div className="gameu__inf-block">
+                                        <div className="gameu__inf-title">Release Date</div>
+                                        <div className="gameu__inf-text">
+                                            {formatDate(gameId.released)}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div className="gameu__content-secondcol">
                                 <VideoUrlReturn/>
@@ -193,6 +220,7 @@ function Gameunique() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     )
 
