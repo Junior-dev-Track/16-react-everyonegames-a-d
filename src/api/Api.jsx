@@ -38,10 +38,19 @@ export async function getApiGameScreenshots (id) {
 export async function getApiGamesVideoUrl (id) {
     try {
         const response = await axios.get(`${API_URL}games/${id}/movies?key=${API_KEY}`);
-        const videoUrl = response.data.results[0]?.data['480']; // Get video URL from response
-        return videoUrl;
+        return response.data.results[0]?.data['480']; // Get video URL from response
     } catch (error) {
         console.log(error);
+    }
+}
+
+export async function getApiGoty(page) {
+    try {
+        const { data } = await axios.get(`${API_URL}games?key=${API_KEY}`);
+       return data;
+    } catch (error) {
+        console.log(error);
+        throw error;
     }
 }
 
