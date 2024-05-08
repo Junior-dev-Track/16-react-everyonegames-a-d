@@ -1,5 +1,5 @@
 import Header from "../Header/Header";
-import { getApiGamesId, getApiGamesVideoUrl, getApiGameScreenshots } from "../../api/Api";
+import { getApiGamesId, getApiGameScreenshots, getApiGamesVideoUrl } from "../../api/Api";
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import Aside from "../../components/Aside.jsx";
@@ -40,8 +40,17 @@ function VideoUrlReturn() {
     const {id} = useParams();
     useEffect(() => {
         async function getGameVideoLoad(id) {
-            const gameVideoLink = await getApiGamesVideoUrl(id);
-            setVideoUrl(gameVideoLink);
+
+            let videoData = localStorage.getItem(`videostock_${id}`);
+
+            if(videoData) {
+                videoData = JSON.parse(videoData);
+                setVideoUrl(videoData);
+            }
+            else {
+                const gameVideoLink = await getApiGamesVideoUrl(id);
+                setVideoUrl(gameVideoLink);
+            }
         }
 
         getGameVideoLoad(id).catch(error => console.error(error));
@@ -78,11 +87,20 @@ function Gameunique() {
         async function getGameLoad(id) {
             const gameData = await getApiGamesId(id);
             setGameId(gameData);
-            // Fetch screenshots
-            const screenshotsData = await getApiGameScreenshots(id);
-            setScreenshots(screenshotsData.results);
-        }
 
+            // recuperation du localstorage (en + de api car nouvelle page)
+            let screenshotsData = localStorage.getItem(`screenshots_${id}`);
+
+            if(screenshotsData) {
+                screenshotsData = JSON.parse(screenshotsData);
+                setScreenshots(screenshotsData);
+            }
+            else {
+                const screenshotsData = await getApiGameScreenshots(id);
+                setScreenshots(screenshotsData.results);
+            }
+
+        }
         getGameLoad(id).catch(error => console.error(error));
     }, [id]);
 
@@ -211,7 +229,7 @@ function Gameunique() {
                             <div className="gameu__content-secondcol">
                                 <VideoUrlReturn/>
                                 <div className="gameu__photo">
-                                    {screenshots.map((screenshot) => (
+                                    {screenshots.results?.map((screenshot) => (
                                         <img key={screenshot.id} src={screenshot.image} alt="Screenshot"/>
                                     ))}
                                 </div>

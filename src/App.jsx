@@ -10,7 +10,6 @@ import "../style.scss"
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
-        <React.StrictMode>
             <Routes>
                 <Route path="/" element={<Main/>}/>
                 <Route path="game/:id" element={<Gameid/>}/>
@@ -18,6 +17,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 <Route path="nextweek" element={<Nextweek/>}/>
                 <Route path="goty" element={<Goty/>}/>
             </Routes>
-        </React.StrictMode>
     </BrowserRouter>
 )
