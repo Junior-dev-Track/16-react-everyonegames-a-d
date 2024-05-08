@@ -12,6 +12,7 @@ const Gameinfo = ({gameInfo}) => {
 
     const [videoUrl, setVideo] = useState([]);
     const [screenshots, setScreenshots] = useState([]);
+    const [isHovered, setIsHovered] = useState(false);
 
     useEffect(() => {
         const fetchVideo = async () => {
@@ -38,11 +39,19 @@ const Gameinfo = ({gameInfo}) => {
 
     }, [gameInfo.id]);
 
+    const MouseEnter = () => {
+        setIsHovered(true)
+    }
+
+
+    function MouseLeave() {
+        setIsHovered(false)
+    }
 
     return (
         <>
-            <article className="bgGames" key={gameInfo.id}>
-                <GameComponent gameInfo={gameInfo} videoUrl={videoUrl} screenshots={screenshots}/>
+            <article className="bgGames" key={gameInfo.id} onMouseEnter={MouseEnter} onMouseLeave={MouseLeave}>
+                <GameComponent gameInfo={gameInfo} videoUrl={videoUrl} screenshots={screenshots} isHovered={isHovered}/>
                 <div className="P-L">
                     <Plateform imageInfo={gameInfo.parent_platforms ? gameInfo.parent_platforms : 'N/A'}/>
                     <Link to={`/game/${gameInfo.id}`}><h2>{gameInfo.name}</h2></Link>

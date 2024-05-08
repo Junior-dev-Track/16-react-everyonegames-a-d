@@ -1,14 +1,13 @@
 /* eslint-disable react/prop-types */
 const GenresGames = ({genreInfo}) => {
-
     return (
-        <>
-            {genreInfo.map(element => (
+        <div>
+            {genreInfo.map((element, index) => (
                 <span className="genreInfo moreTextInfo" key={element.id}>
-                    <span>{element.name} </span>
+                    {element.name}{index < genreInfo.length - 1 ? ', ' : ''}
                 </span>
             ))}
-        </>
+        </div>
     );
 }
 

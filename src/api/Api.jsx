@@ -5,7 +5,7 @@ const API_KEY = import.meta.env.VITE_API_KEY;
 
 export function getApiList(page) {
     return new Promise((resolve, reject) => {
-        axios.get(`${API_URL}games?page=${page}&page_size=10&key=${API_KEY}`)
+        axios.get(`${API_URL}games?page=${page}&page_size=20&key=${API_KEY}`)
             .then(response => {
                 return resolve(response.data);
             })

@@ -11,7 +11,7 @@ function Aside () {
                     <li className="nav__menutitle">
                         Release
                     </li>
-                    <li className="nav__menulink">
+                    {/*<li className="nav__menulink">
                         <div className="Colors">
                             <Link to="/thisweek">
                                 <svg className="SVGInline-svg discover-sidebar__icon-svg"
@@ -22,7 +22,7 @@ function Aside () {
                             </Link>
                             <span>This Week</span>
                         </div>
-                    </li>
+                    </li>*/}
                     <li className="nav__menulink">
                         <div className="Colors">
                             <Link to="/nextweek">

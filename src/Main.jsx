@@ -12,7 +12,7 @@ function Main() {
                 <div className="flexBox">
                     <Aside />
                     <main>
-                        <div className="chooseCat">
+                        {/*<div className="chooseCat">
                             <select>
                                 <option value="Dateadded">Date added</option>
                                 <option value="Name">Name</option>
@@ -21,7 +21,7 @@ function Main() {
                             <select>
                                 <option value=""></option>
                             </select>
-                        </div>
+                        </div>*/}
                         <GenerateGameList/>
                     </main>
                 </div>

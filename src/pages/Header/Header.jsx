@@ -3,8 +3,7 @@ function Header() {
     return (
         <header>
             <nav>
-                <img className="iconWeb" src="/src/assets/Instant.svg" alt="Instant Logo"/>
-                    <input type="text" />
+                {/*<img className="iconWeb" src="/src/assets/Instant.svg" alt="Instant Logo"/>*/}
             </nav>
         </header>
     );

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import Header from "../Header/Header";
 import { getApiGamesId, getApiGameScreenshots, getApiGamesVideoUrl } from "../../api/Api";
 import { useParams } from 'react-router-dom';
