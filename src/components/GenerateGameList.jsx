@@ -20,6 +20,7 @@ function GenerateGameList() {
                 const newGames = data.results.filter(game => !loadedGameIds.current.has(game.id));
                 setGameList((prevGameList) => [...prevGameList, ...newGames]);
                 newGames.forEach(game => loadedGameIds.current.add(game.id));
+
             } catch (error) {
                 setRedirectToErrorPage(true);
             } finally {

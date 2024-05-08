@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 const GenresGames = ({genreInfo}) => {
-console.info('GenresGames', genreInfo);
+
     return (
         <>
             {genreInfo.map(element => (
