@@ -1,4 +1,3 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
 import {Routes, Route, BrowserRouter} from "react-router-dom";
 import Main from './Main.jsx'
@@ -6,7 +5,7 @@ import Gameid from "./pages/Gameid/Gameunique";
 import Thisweek from "./pages/Releases/Thisweek";
 import Nextweek from "./pages/Releases/Nextweek";
 import Goty from "./pages/Releases/Goty";
-import "../style.scss"
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>

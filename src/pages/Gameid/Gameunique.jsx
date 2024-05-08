@@ -6,6 +6,7 @@ import Aside from "../../components/Aside.jsx";
 import '../../styles/_Gameunique.scss';
 import Plateform from "../../components/Plateform.jsx";
 import Footer from "../Footer/Footer.jsx";
+import {formatDate} from "../../components/DateFormater.jsx";
 
 // fonction qui affiche un bouton read more
 const GameDescription = ({ description }) => {
@@ -24,7 +25,7 @@ const GameDescription = ({ description }) => {
                 <p>
                     {showFullDescription ? description : slicedDescription}
                 </p>
-                {description && description.length > 300 && (
+                    {description && description.length > 300 && (
                     <button onClick={toggleDescription}>
                         {showFullDescription ? 'Read less' : 'Read more'}
                     </button>
@@ -69,13 +70,6 @@ function VideoUrlReturn() {
         </>
     );
 }
-
-// Fonction pour formater la date
-    function formatDate(dateString) {
-        const dateconversion = { year: 'numeric', month: 'short', day: '2-digit' };
-        const date = new Date(dateString);
-        return date.toLocaleDateString('en-US', dateconversion);
-    }
 
 // eslint-disable-next-line react/prop-types
 function Gameunique() {

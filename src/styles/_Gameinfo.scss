@@ -28,19 +28,24 @@
         padding: 15px 15px 20px;
 
         .release{
+            display: flex;
+            justify-content: space-between;
+            gap: 75px;
             padding: 12px 0;
         }
 
         .genres{
+            display: flex;
+            justify-content: space-between;
+            gap: 75px;
             padding-top: 12px;
         }
         .moreInfoGame{
-            display: flex;
-            justify-content: space-between;
 
             .textInfo{
                 font-size: 12px;
                 color: #9e9d9d;
+                margin-right: 5px;
             }
 
             .moreTextInfo{

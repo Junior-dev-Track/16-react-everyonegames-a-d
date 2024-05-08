@@ -6,6 +6,7 @@ import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {getApiGameScreenshots, getApiGamesVideoUrl} from "../api/Api.jsx";
 import GameComponent from "./GameComponent.jsx";
+import {formatDate} from "./DateFormater.jsx";
 
 const Gameinfo = ({gameInfo}) => {
 
@@ -48,7 +49,7 @@ const Gameinfo = ({gameInfo}) => {
                     <div className="gameHide">
                         <div className="release moreInfoGame border">
                             <span className="textInfo">Release date:</span>
-                            <span className="moreTextInfo">{gameInfo.released ? gameInfo.released : 'N/A'}</span>
+                            <span className="moreTextInfo">{gameInfo.released ? formatDate(gameInfo.released) : 'N/A'}</span>
                         </div>
                         <div className="genres moreInfoGame">
                             <span className="textInfo">Genres:</span>

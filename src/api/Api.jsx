@@ -44,7 +44,7 @@ export async function getApiGameScreenshots(id) {
 
 export async function getApiGamesVideoUrl (id) {
     let video = localStorage.getItem(`video_${id}`);
-    if (video && video !== undefined) {
+    if (video) {
         return JSON.parse(video);
     }
     else {

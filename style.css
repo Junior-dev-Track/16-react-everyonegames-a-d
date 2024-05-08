@@ -87,18 +87,21 @@ header {
   padding: 15px 15px 20px;
 }
 .bgGames .P-L .release {
+  display: flex;
+  justify-content: space-between;
+  gap: 75px;
   padding: 12px 0;
 }
 .bgGames .P-L .genres {
-  padding-top: 12px;
-}
-.bgGames .P-L .moreInfoGame {
   display: flex;
   justify-content: space-between;
+  gap: 75px;
+  padding-top: 12px;
 }
 .bgGames .P-L .moreInfoGame .textInfo {
   font-size: 12px;
   color: #9e9d9d;
+  margin-right: 5px;
 }
 .bgGames .P-L .moreInfoGame .moreTextInfo {
   font-size: 12px;

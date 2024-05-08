@@ -26,10 +26,7 @@ function GenerateGameList() {
                 setLoading(false);
             }
         };
-
-
-        loadInitialData()
-
+        loadInitialData();
 
         return () => {}; // Cleanup function
     }, [page]);
@@ -54,14 +51,22 @@ function GenerateGameList() {
         return () => observer.disconnect();
     }, []);
 
+    const refresh = () => {
+        window.location.reload();
+    }
+
     if (redirectToErrorPage) {
+
         return (
             <div>
                 <h1>Error</h1>
                 <p>An error occurred while fetching data from the API.</p>
+                <button onClick={refresh}>Refresh</button>
             </div>
         );
     }
+
+
 
     const columns = [[], [], [], []];
 
