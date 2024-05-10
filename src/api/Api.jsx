@@ -52,7 +52,6 @@ export async function getApiGamesVideoUrl (id) {
             const response = await axios.get(`${API_URL}games/${id}/movies?key=${API_KEY}`);
             const video = response.data.results[0]?.data['480'];
 
-
             if (video !== undefined) {
                 // Stocker la valeur uniquement si elle n'est pas undefined
                 localStorage.setItem(`video_${id}`, JSON.stringify(video));
@@ -75,6 +74,16 @@ export async function getApiGoty() {
         return data;
     } catch (error) {
         console.log(error);
+        throw error;
+    }
+}
+
+export async function getApiSearch(searchTerm) {
+    try {
+        const response = await axios.get(`${API_URL}games?search=${searchTerm}&key=${API_KEY}`);
+        return response.data.results;
+    } catch (error) {
+        console.error('Erreur lors de la récupération des résultats de recherche:', error);
         throw error;
     }
 }

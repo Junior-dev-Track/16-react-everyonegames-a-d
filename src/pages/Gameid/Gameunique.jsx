@@ -72,7 +72,7 @@ function VideoUrlReturn() {
     );
 }
 
-// eslint-disable-next-line react/prop-types
+
 function Gameunique() {
     const [gameId, setGameId] = useState({});
     const [screenshots, setScreenshots] = useState([]); // State to store screenshots

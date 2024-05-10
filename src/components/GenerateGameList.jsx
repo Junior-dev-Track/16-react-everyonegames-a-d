@@ -1,6 +1,7 @@
 import Gameinfo from "./Gameinfo.jsx";
 import { useEffect, useRef, useState } from "react";
 import {getApiList} from "../api/Api.jsx";
+import '../styles/_Generategamelist.scss';
 
 function GenerateGameList() {
     const [gameList, setGameList] = useState([]);
@@ -9,6 +10,9 @@ function GenerateGameList() {
     const [page, setPage] = useState(1);
     const loader = useRef(null);
     const loadedGameIds = useRef(new Set());
+    const [sortedBy, setSortedBy] = useState('');
+    const [selectedCategory, setSelectedCategory] = useState('');
+    const [selectedPlatform, setSelectedPlatform] = useState('');
 
     useEffect(() => {
         const loadInitialData = async () => {
@@ -66,11 +70,32 @@ function GenerateGameList() {
         );
     }
 
+    const sortByCategory = (category) => {
+        setSelectedCategory(category);
+        setSortedBy('category');
+    };
 
+    const sortByPlatform = (platform) => {
+        setSelectedPlatform(platform);
+        setSortedBy('platform');
+    };
+
+    const filterGames = () => {
+        let filteredGames = [...gameList];
+        if (selectedCategory !== '') {
+            filteredGames = filteredGames.filter(game => game.genres.find(genre => genre.name === selectedCategory));
+        }
+        if (selectedPlatform !== '') {
+            filteredGames = filteredGames.filter(game => game.platforms.find(platform => platform.platform.name === selectedPlatform));
+        }
+        return filteredGames;
+    };
+
+    const filteredGames = filterGames();
 
     const columns = [[], [], [], []];
 
-    gameList.forEach((game, index) => {
+    filteredGames.forEach((game, index) => {
         columns[index % 4].push(
             <Gameinfo gameInfo={game} key={game.id} />
         );
@@ -78,23 +103,45 @@ function GenerateGameList() {
 
 
     return (
-
-        <div className="mainBloc">
-            {loading ? (
-                <p>Loading...</p>
-            ) : (
-                <>
-                    {columns.map((column, index) => (
-                        <div className="column" key={index}>
-                            {column}
-                        </div>
-                    ))}
-                </>
-            )}
-            <div ref={loader}>
-                <p>Loading...</p>
+        <>
+            <div className="filterContainer">
+                <div>
+                    <label></label>
+                    <select className="styled-select" onChange={(e) => sortByCategory(e.target.value)} value={selectedCategory}>
+                        <option value="">Category</option>
+                        {Array.from(new Set(gameList.flatMap(game => game.genres.map(genre => genre.name)))).map((category, index) => (
+                            <option key={index} value={category}>{category}</option>
+                        ))}
+                    </select>
+                </div>
+                <div>
+                    <label></label>
+                    <select className="styled-select" onChange={(e) => sortByPlatform(e.target.value)} value={selectedPlatform}>
+                        <option value="">Platform</option>
+                        {Array.from(new Set(gameList.flatMap(game => game.platforms.map(platform => platform.platform.name)))).map((platform, index) => (
+                            <option key={index} value={platform}>{platform}</option>
+                        ))}
+                    </select>
+                </div>
             </div>
-        </div>
+            <div className="mainBloc">
+                {loading ? (
+                    <p>Loading...</p>
+                ) : (
+                    <>
+                        {columns.map((column, index) => (
+                            <div className="column" key={index}>
+                                {column}
+                            </div>
+                        ))}
+
+                    </>
+                )}
+                <div ref={loader}>
+                    <p>Loading...</p>
+                </div>
+            </div>
+        </>
     );
 }
 

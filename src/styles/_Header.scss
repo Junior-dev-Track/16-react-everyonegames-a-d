@@ -1,13 +1,53 @@
-.iconWeb{
-    width: 15px;
-    height: 15px;
-}
-
-nav {
-
-}
-
 header{
     background-color: #0A0A0A;
+}
+
+.searchResults {
+    position: absolute;
+    top: 45px; /* Ajustez la position verticale selon votre besoin */
+    left: 25%;
+    background-color: #0A0A0A;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    z-index: 1; /* Assurez-vous que le menu apparaît au-dessus du reste du contenu */
+    width: 50%; /* Ajustez la largeur si nécessaire */
+}
+
+.searchResults li {
+    padding: 10px;
+    border-left: 4px solid transparent;
+    text-align: left;
+    transition: color 0.3s; /* Transition pour la couleur du texte */
+}
+
+.searchResults li a {
+    color: #ffffff;
+    text-decoration: none;
+    text-align: left;
+}
+
+.searchResults li a:hover {
+    color: #000000!important;
+}
+
+.searchResults li:hover {
+    background-color: #f0f0f0;
+    border-left-color: #977c7c;
+    cursor: pointer;
+    color: #000000;
+}
+
+.searchInput {
+    margin-top: 15px;
+    width: 65%;
+    height: 25px;
+    border-radius: 24px;
+    background-image: url("../assets/telechargement.svg");
+    background-size: 15px 15px;
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    padding-left: 40px; /* Pour ajuster l'espace entre l'image et le texte */
 }
 
